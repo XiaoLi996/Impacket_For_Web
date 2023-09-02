@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>内网工具</title>
+    <link rel="icon" href="favicon.ico" type="image/ico">
+    <meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
+    <meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
+    <meta name="author" content="yinqi">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="lyear-layout-web">
+    <div class="lyear-layout-container">
+        <!--左侧导航-->
+        <aside class="lyear-layout-sidebar">
+            <!-- logo -->
+            <div id="logo" class="sidebar-header">
+                <a href="index.html"><img src="images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
+            </div>
+            <div class="lyear-layout-sidebar-scroll">
+
+                <nav class="sidebar-main">
+                    <ul class="nav nav-drawer">
+                        <li class="nav-item nav-item-has-subnav active open">
+                            <a href="javascript:void(0)"><i class="mdi mdi-pulse"></i> 漏洞利用</a>
+                            <ul class="nav nav-subnav">
+                                <li class="active"> <a href="index.html">哈希传递</a> </li>
+                                <li> <a href="">扫描模块【未公开】</a> </li>
+                                <li> <a href="">漏洞利用【未公开】</a> </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)"><i class="mdi mdi-google-physical-web"></i> 内网探测【未公开】</a>
+                        </li>
+                        <li class="nav-item"> <a href="settings.html"><i class="mdi mdi-wan"></i> 系统设置</a> </li>
+                        <li class="nav-item"> <a href=""><i class="mdi mdi-home"></i> 登录日志</a> </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </aside>
+        <!--End 左侧导航-->
+
+        <!--头部信息-->
+        <header class="lyear-layout-header">
+
+            <nav class="navbar navbar-default">
+                <div class="topbar">
+
+                    <div class="topbar-left">
+                        <div class="lyear-aside-toggler">
+                            <span class="lyear-toggler-bar"></span>
+                            <span class="lyear-toggler-bar"></span>
+                            <span class="lyear-toggler-bar"></span>
+                        </div>
+                        <span class="navbar-page-title"> 控制台 - Impacket For Web </span>
+                    </div>
+
+                    <ul class="topbar-right">
+                        <li class="dropdown dropdown-profile">
+                            <a href="javascript:void(0)" data-toggle="dropdown" style="margin-right: 10px">
+                                <img class="img-avatar img-avatar-48 m-r-10" src="images/users/avatar.jpg" alt="admin" />
+                                <span>Admin <span class="caret"></span></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li> <a href=""><i class="mdi mdi-account"></i> 个人信息</a> </li>
+                                <li> <a href=""><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+                                <li> <a href="javascript:void(0)"><i class="mdi mdi-delete"></i> 清空缓存</a></li>
+                                <li class="divider"></li>
+                                <li> <a href=""><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+
+        </header>
+        <!--End 头部信息-->
+
+        <!--页面主要内容-->
+        <main class="lyear-layout-content">
+
+            <div class="container-fluid" id="app">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="card">
+                            <div class="card-header"><h4>哈希传递</h4></div>
+                            <div class="card-body">
+
+                                <form class="form-inline" action="api/api" method="post" onsubmit="return false;">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="command">Command</label>
+                                        <input class="form-control" type="text" id="command" name="command" v-model="command" placeholder="Command" style="width: 800px">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="exec_method">选择框</label>
+                                        <div class="col-xs-12">
+                                            <select class="form-control" id="ExecMethod" name="ExecMethod" v-model="ExecMethod" size="1" style="height: 38px; width: 182px">
+                                                <option value="psexec">PSEXEC</option>
+                                                <option value="atexec">ATEXEC</option>
+                                                <option value="smbexec" disabled>SMBEXEC</option>
+                                                <option value="wmiexec">WMIEXEC</option>
+                                                <option value="dcomexec">DCOMEXEC</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="textarea">文本域</label>
+                                            <textarea class="form-control" id="response" name="response" v-model="response" rows="6" placeholder="Response" style="width: 1000px" disabled></textarea>
+                                    </div><hr>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="hostname">IP</label>
+                                        <input class="form-control" type="text" id="hostname" name="hostname" v-model="hostname" placeholder="IP">
+                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div class="form-group">
+                                        <label class="sr-only" for="username">User</label>
+                                        <input class="form-control" type="text" id="username" name="username" v-model="username" placeholder="User">
+                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div class="form-group">
+                                        <label class="sr-only" for="password">Password</label>
+                                        <input class="form-control" type="text" id="password" name="password" v-model="password" placeholder="Password">
+                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div class="form-group">
+                                        <label class="sr-only" for="auth_type">选择框</label>
+                                        <div class="col-xs-12">
+                                            <select class="form-control" id="AuthType" name="AuthType" v-model="AuthType" size="1" style="height: 38px; width: 182px">
+                                                <option value="1">HASH</option>
+                                                <option value="0">PASSWORD</option>
+                                            </select>
+                                        </div>
+                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div class="form-group">
+                                        <button class="btn btn-default" style="height: 38px;width: 150px" type="submit" @click="Send" :disabled="isLoading">
+                                            <span v-if="isLoading">Loading...</span>
+                                            <span v-else>Send</span>
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </main>
+        <!--End 页面主要内容-->
+    </div>
+</div>
+<script type="text/javascript" src="js/vue@2.js"></script>
+<script type="text/javascript" src="js/axios.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="js/main.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            command: '',
+            ExecMethod: 'psexec',
+            response: '',
+            hostname: '',
+            username: '',
+            password: '',
+            AuthType: '1',
+            isLoading: false
+        },
+        methods: {
+            Send() {
+                this.isLoading = true;
+                const formData = {
+                    command: this.command,
+                    hostname: this.hostname,
+                    username: this.username,
+                    password: this.password,
+                    is_hash: this.AuthType,
+                    exec_method: this.ExecMethod
+                };
+                axios.post('http://localhost:8000/v1/attack/attack', formData)
+                    .then(response => {
+                        // 把服务器返回的响应数据显示在 textarea 中
+                        this.isLoading = false;
+                        this.response = response.data;
+                        if (response.data.code == 0) {
+                            this.response = response.data.data;
+                        }else {
+                            this.response = response.data.detail;
+                        }
+                    })
+                    .catch(error => {
+                        this.isLoading = false;
+                        console.error('请求出错:', error);
+                        this.response = '请求出错，请查看控制台获取详细信息';
+                    });
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
