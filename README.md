@@ -32,11 +32,11 @@ http://localhost:8000/Web/index.html
 # 安装Docker
 apt install docker.io
 # 拉取Ubuntu镜像并运行
-docker run -itd --net host --name Impacket_For_Web ubuntu
+docker run -itd -p 8000:8000 --name Impacket_For_Web ubuntu
 # 进入容器
 docker exec -it Impacket_For_Web bash
 # 安装python3.10等必要环境
-apt update && apt install python3.10 python3-pip git等必要环境
+apt update && apt install python3.10 python3-pip git
 # 拉取项目
 git clone https://github.com/XiaoBai-12138/Impacket_For_Web.git
 # 进入项目
