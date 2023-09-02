@@ -16,7 +16,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-app.mount("/", StaticFiles(directory="Web"), name="Web")
+app.mount("/Web", StaticFiles(directory="Web"), name="Web")
 app.include_router(proxy.router, prefix="/v1/proxy", tags=["proxy"])
 app.include_router(attack.router, prefix="/v1/attack", tags=["attack"])
 
