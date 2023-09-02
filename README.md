@@ -49,6 +49,22 @@ python3 main.py
 http://localhost:8000/Web/index.html
 ```
 
+# Dockerfile部署
+
+```
+# 拉取项目
+git clone https://github.com/XiaoBai-12138/Impacket_For_Web.git
+# 进入项目
+cd Impacket_For_Web
+# 构建镜像
+docker build -t impacket_for_web .
+# 运行容器
+docker run -itd -p 8000:8000 --name Impacket_For_Web impacket_for_web
+# 访问程序
+http://localhost:8000/Web/index.html
+```
+
+
 
 哈希传递：
 
