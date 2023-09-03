@@ -5,7 +5,6 @@ from fastapi import APIRouter, Depends, Form
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from app.core.database import _DATABASE_  # 从这里导入
-from app.core.security import authenticate
 from app.services.proxy_service import get_proxy, update_proxy
 
 router = APIRouter()
